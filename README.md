@@ -46,7 +46,7 @@ Secara keseluruhan, Pocket Guard membantu melacak arus kas harian, menjaga kesei
 
       > Kelas Transaksi terletak pada package model dan berperan sebagai superclass atau kelas induk dari data transaksi. Kelas ini berisi atribut yang umum dimiliki setiap transaksi, yaitu id, tanggal, keterangan, jenis, kategori, metodePembayaran, dan jumlah. Semua atribut dibuat private untuk menerapkan konsep encapsulation, sedangkan aksesnya diberikan melalui method getter dan setter yang bersifat public. Konstruktor kelas Transaksi digunakan untuk menginisialisasi seluruh atribut ketika sebuah objek transaksi baru dibuat. Dengan adanya kelas ini, struktur data transaksi menjadi konsisten dan dapat diwariskan ke subclass lain. Kelas Transaksi juga menjadi kontrak dasar yang memungkinkan penggunaan polimorfisme pada list transaksi di kelas service.
 
-   c. Class Pemasukkan.Java yang terdapat di Packages Model
+   c. Class Pemasukan.Java yang terdapat di Packages Model
 
       <img width="324" height="88" alt="image" src="https://github.com/user-attachments/assets/7beac97c-c2c8-48d6-bc3d-1dc1ec3007ea" />
 
@@ -64,24 +64,76 @@ Secara keseluruhan, Pocket Guard membantu melacak arus kas harian, menjaga kesei
 
       > Kelas TransaksiService terletak pada package service dan bertanggung jawab mengelola seluruh logika bisnis aplikasi. Di dalamnya terdapat sebuah list bertipe Transaksi yang dapat menyimpan objek Pemasukan maupun Pengeluaran. Di sinilah konsep polimorfisme dijalankan, karena meskipun list bertipe Transaksi, saat method getJenis() dipanggil, hasilnya akan menyesuaikan perilaku override dari masing-masing subclass. TransaksiService menyediakan berbagai fitur seperti menambah data baru dengan memilih subclass sesuai jenis transaksi, menampilkan seluruh catatan dalam bentuk tabel, mengubah data, menghapus data, menghitung ringkasan saldo, serta mengatur batas pengeluaran bulanan. Selain itu, TransaksiService juga memiliki fitur filter berdasarkan kategori, metode pembayaran, dan jenis transaksi, serta pencarian berdasarkan keterangan. Untuk mendukung hal itu, disediakan berbagai helper method privat seperti validasi input, pencarian ID, pemformatan rupiah, dan tampilan tabel. Dengan demikian, TransaksiService berfungsi sebagai penghubung utama antara antarmuka di kelas App dan data model pada kelas Transaksi beserta turunannya.
 
-3. Penjelasan packages, dengan memisahkan class berdasarkan fungsinya:
-    - packages main > isinya adalah kode yang menyimpan menu user
+2. Penjelasan packages, dengan memisahkan class berdasarkan fungsinya:
+    - Packages Main
+      
+         <img width="306" height="20" alt="image" src="https://github.com/user-attachments/assets/f663a9fc-d68e-463f-8c95-9ee9418fae72" />
 
-      <img width="298" height="23" alt="image" src="https://github.com/user-attachments/assets/7db00e9f-91d9-4e3e-a1bf-13141128816d" />
+      > Package com.mycompany.posttest3pbo.main berisi kelas utama yang menjadi titik masuk program, yaitu App.java. Di dalamnya terdapat method main yang bertugas menampilkan menu aplikasi Pocket Guard, menerima input pengguna, dan memanggil metode-metode yang ada di service. Dengan kata lain, package ini menangani sisi antarmuka console yang berinteraksi langsung dengan user. Selain itu, di dalam file yang sama terdapat kelas SafeInput yang digunakan untuk memastikan input angka selalu valid agar program berjalan tanpa error. Package ini fokus pada bagian view dan entry point aplikasi.
 
-    - packages service > menyimpan kode logika CRUD
+    - Packages Model 
 
-      <img width="319" height="22" alt="image" src="https://github.com/user-attachments/assets/91e647ee-a680-4c26-bc18-29dfa9e0a33f" />
+      <img width="334" height="22" alt="image" src="https://github.com/user-attachments/assets/25ec944a-6b20-4f84-a340-13c9af7867c4" />
 
-    - packages model > menyimpan struktur data seperti atribut dan constructor
+      > Package com.mycompany.posttest3pbo.model berfungsi menyimpan struktur data transaksi. Di dalamnya terdapat kelas Transaksi sebagai superclass yang berisi atribut dan method dasar untuk sebuah catatan keuangan. Kemudian ada dua subclass, yaitu Pemasukan dan Pengeluaran, yang mewarisi struktur dari Transaksi namun melakukan overriding pada method getJenis() dan setJenis() agar setiap objek memiliki jenis transaksi yang konsisten. Dengan adanya package ini, data transaksi terkelola dengan baik, mendukung konsep encapsulation untuk keamanan atribut, sekaligus menerapkan inheritance dan polimorfisme sesuai prinsip OOP.
 
-      <img width="325" height="23" alt="image" src="https://github.com/user-attachments/assets/83dff364-4006-4a8d-af4e-e19c95fb479f" />
+    - Packages Service
+      
+        <img width="330" height="23" alt="image" src="https://github.com/user-attachments/assets/d3638ae0-0ff7-4b92-8b64-e1177e06a6da" />
 
-   > Struktur proyek dipisah ke tiga paket sesuai fungsinya. Paket com.mycompany.posttest2pbo.main menampung antarmuka konsol dan entry point aplikasi, yaitu kelas App yang menampilkan menu dan meneruskan pilihan pengguna. Paket com.mycompany.posttest2pbo.service berisi logika bisnis: seluruh operasi CRUD, validasi input, filter dan search, ringkasan saldo, pengaturan batas, serta utilitas tampilan tabel di sinilah proses data berlangsung tanpa bergantung pada UI. Paket com.mycompany.posttest2pbo.model menyimpan struktur data, yaitu kelas Transaksi dengan atribut, constructor, serta getter–setter. Pemisahan ini membuat kode rapi, mudah dirawat dan diuji, serta sesuai ketentuan tugas tentang packages berdasarkan fungsi.
+        > Package com.mycompany.posttest3pbo.service berisi logika bisnis yang mengatur jalannya aplikasi, diwakili oleh kelas TransaksiService. Kelas ini bertugas menyimpan daftar transaksi, menambahkan data baru, mengedit, menghapus, hingga menampilkan ringkasan saldo. Selain itu, package ini juga mengelola fitur tambahan seperti pengaturan batas pengeluaran, filter berdasarkan kategori, metode pembayaran, maupun pencarian keterangan. Package Service inilah yang menjadi penghubung antara antarmuka pengguna di kelas App dengan struktur data pada package Model, sehingga tanggung jawab program terpisah dengan jelas dan program lebih mudah dikelola.
 
-4. Menerapkan encapsulation (getter dan setter)
-5. Menerapkan inheritance (minimal memiliki 1 superclass dengan 2 subclass)
-6. Menerapkan Overriding
+3. Penjelasan encapsulation (getter dan setter)
+   
+   <img width="1077" height="341" alt="image" src="https://github.com/user-attachments/assets/85f7d6c2-6608-4782-8b76-593537d4647a" />
+
+   > Pada program Pocket Guard, konsep encapsulation diterapkan dengan cara menjadikan seluruh atribut di kelas Transaksi bersifat private. Dengan begitu, data seperti id, tanggal, keterangan, jenis, kategori, metode pembayaran, dan jumlah tidak dapat diakses maupun diubah secara langsung dari luar kelas. Untuk memberikan akses yang aman, setiap atribut memiliki getter dan setter yang bersifat public. Getter digunakan untuk membaca nilai atribut, sedangkan setter dipakai untuk memperbarui nilai atribut. Pola ini memastikan bahwa perubahan data selalu melalui metode resmi yang sudah disediakan, sehingga integritas data tetap terjaga dan program lebih terkontrol.
+   >
+   > Selain itu, encapsulation juga memudahkan pengembangan di masa depan. Jika diperlukan logika tambahan, misalnya validasi nilai sebelum disimpan, hal tersebut dapat ditambahkan langsung di dalam setter tanpa perlu mengubah kode di bagian lain. Dengan demikian, encapsulation tidak hanya berfungsi melindungi data, tetapi juga membuat program lebih rapi, terstruktur, serta sejalan dengan prinsip dasar Object-Oriented Programming (OOP).
+
+4. Penjelasan inheritance (minimal memiliki 1 superclass dengan 2 subclass)
+
+   Pada program ini, konsep inheritance diterapkan dengan menjadikan kelas Transaksi.java sebagai superclass, sedangkan kelas Pemasukan.java dan Pengeluaran.java sebagai subclass.
+   
+   a. Transaksi.Java (Super Class)
+
+      <img width="165" height="28" alt="image" src="https://github.com/user-attachments/assets/65a8e0d8-7772-4bda-9d2f-a5c31a38b24e" />
+
+      > Kelas Transaksi.java berfungsi sebagai induk yang menyimpan seluruh atribut dasar dari sebuah catatan keuangan, seperti id, tanggal, keterangan, jenis, kategori, metode pembayaran, dan jumlah. Semua atribut ini dilengkapi dengan konstruktor serta method getter dan setter untuk menjaga enkapsulasi. Dengan adanya superclass ini, struktur data transaksi menjadi seragam dan siap diwarisi oleh kelas lain.
+
+   b. Pemasukan.Java (Sub Class)
+
+      <img width="163" height="25" alt="image" src="https://github.com/user-attachments/assets/aef230ae-91aa-4fb0-b9ea-d50d1e10bda1" />
+
+   > Kelas Pemasukan.java merupakan subclass yang mewarisi seluruh atribut dan method dari Transaksi, tetapi secara khusus digunakan untuk transaksi berjenis pemasukan. Di dalamnya terdapat konstruktor yang secara otomatis menetapkan jenis transaksi sebagai “Pemasukan”. Selain itu, kelas ini juga melakukan overriding terhadap method getJenis() agar selalu mengembalikan nilai “Pemasukan” dan overriding pada method setJenis() untuk mencegah perubahan nilai jenis secara sembarangan. Hal ini menjamin bahwa setiap objek Pemasukan akan tetap konsisten dengan identitasnya.
+
+   c. Pengeluaran.Java (Sub Class)
+
+      <img width="173" height="23" alt="image" src="https://github.com/user-attachments/assets/ae5e320b-b41b-43a5-beef-a50a880da778" />
+
+      > Kelas Pengeluaran.java juga menjadi subclass dari Transaksi, namun dikhususkan untuk transaksi dengan jenis pengeluaran. Sama seperti Pemasukan, konstruktor kelas ini otomatis memberikan nilai “Pengeluaran” pada jenis transaksi. Method getJenis() dioverride untuk selalu mengembalikan “Pengeluaran”, sedangkan method setJenis() dioverride agar tidak dapat mengubah nilai jenis. Dengan demikian, setiap objek Pengeluaran terjaga konsistensinya sebagai transaksi keluar.
+
+   Melalui penerapan inheritance ini, program dapat memanfaatkan satu struktur induk yang umum (Transaksi) sekaligus mengelompokkan transaksi ke dalam subclass khusus (Pemasukan dan Pengeluaran).
+
+5. Penjelasan Overriding
+
+   Pada program Pocket Guard, konsep overriding diterapkan di dalam subclass Pemasukan.java dan Pengeluaran.java. Overriding berarti sebuah subclass mendefinisikan ulang method yang sudah ada di superclass dengan perilaku yang lebih spesifik sesuai kebutuhan.
+
+   a. Class Pemasukan.Java
+
+      <img width="405" height="233" alt="image" src="https://github.com/user-attachments/assets/a0aedc93-9373-46d3-b114-9cc94d765e18" />
+
+      >Pada kelas Pemasukan.java, method getJenis() dioverride agar selalu mengembalikan nilai string “Pemasukan”. Dengan demikian, setiap kali objek Pemasukan dipanggil untuk mengetahui jenis transaksinya, hasilnya akan konsisten dan tidak dapat berubah. Selain itu, method setJenis(String jenis) juga dioverride namun dibuat kosong, sehingga meskipun pengguna mencoba mengubah jenis transaksi, nilainya tidak akan berubah. Hal ini memastikan bahwa objek Pemasukan akan selalu beridentitas sebagai pemasukan.
+
+   b. Class Pengeluaran.Java
+
+      <img width="392" height="232" alt="image" src="https://github.com/user-attachments/assets/50a4cb6d-7c14-4c84-9e7e-dc92f2c2ce50" />
+
+   >Hal serupa juga dilakukan pada kelas Pengeluaran.java. Method getJenis() dioverride agar setiap kali dipanggil akan mengembalikan nilai string “Pengeluaran”. Sedangkan method setJenis(String jenis) dioverride tanpa isi sehingga upaya untuk mengubah jenis transaksi tidak akan berdampak. Dengan pola ini, semua objek Pengeluaran akan tetap konsisten sebagai transaksi pengeluaran.
+
+   Penerapan overriding ini sangat penting karena menjaga konsistensi data antara jenis transaksi dengan subclass yang menaunginya. Selain itu, hal ini juga memperlihatkan penggunaan prinsip polimorfisme dalam OOP, di mana pemanggilan method getJenis() akan menghasilkan perilaku yang berbeda tergantung pada objek sebenarnya, apakah itu Pemasukan atau Pengeluaran, meskipun keduanya ditampung dalam list bertipe Transaksi.
+
+   
    
 ### ~ Penjelasan Alur Program (Output Program)  ~
 

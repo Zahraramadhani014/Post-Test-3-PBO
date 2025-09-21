@@ -32,57 +32,39 @@ Secara keseluruhan, Pocket Guard membantu melacak arus kas harian, menjaga kesei
 
 ### ~ Penjelasan Program  ~
 
-1. Penjelasan 3 class
+1. Penjelasan class yang ada di program "Pocket Guard"
    
-   <img width="416" height="181" alt="image" src="https://github.com/user-attachments/assets/e4f86337-d31c-4f65-a248-5c8884b513b9" />
-
-> Pada program "Pocket Guard" ini terdapat 3 class, yaitu: App.Java, TransaksiService.Java, dan Transaksi.Java
->
-> Pada struktur di atas, App.java di paket com.mycompany.posttest2pbo.main berperan sebagai titik masuk program sekaligus antarmuka teks sederhana dengan menampilkan menu utama dan meneruskan pilihan pengguna ke kelas layanan.
-> 
-> Seluruh logika bisnis ditempatkan di TransaksiService.java pada paket com.mycompany.posttest2pbo.service, mulai dari CRUD, ringkasan saldo, pengaturan batas pengeluaran, filter dan fitur search, sampai utilitas tampilan tabel serta validasi input. Khusus menu Ubah, input kosong (langsung Enter) dibiarkan untuk mempertahankan nilai lama, sedangkan pada tambah, filter, dan set batas, input kosong ditolak agar data tetap bersih.
-> 
->  Data transaksi itu sendiri dimodelkan oleh Transaksi.java di paket com.mycompany.posttest2pbo.model, yang hanya berisi struktur atribut (id, tanggal, keterangan, jenis, kategori, metodePembayaran, jumlah) dengan modifier private, constructor untuk menginisialisasi objek, serta getter–setter public agar akses data tetap terkontrol. Alurnya sederhana: App memanggil TransaksiService, dan TransaksiService mengelola kumpulan objek Transaksi, sehingga pola MVC ringan terpenuhi dengan pemisahan paket sesuai fungsinya.
-
-2. Penjelasan properties
+   a. Class App.Java yang terdapat di Packages Main
    
-   <img width="372" height="206" alt="image" src="https://github.com/user-attachments/assets/b15cf25f-1a5e-48a8-9637-d9dbe106175a" />
+      <img width="306" height="43" alt="image" src="https://github.com/user-attachments/assets/d8146044-a5ab-4f3a-9a7e-4a500e61aba3" />
 
-> Pada program "Pocket Guard" ini terdapat 6 properties yaitu: "id", "tanggal", "keterangan", "jenis", "kategori", "metode pembayaran", dan "jumlah"
->
-> Pada kelas Transaksi, setiap baris private adalah properti/atribut data milik satu transaksi: id (int) sebagai identitas unik; tanggal (String) untuk waktu transaksi dengan format yyyy-mm-dd; keterangan untuk deskripsi singkat; jenis menandai Pemasukan atau Pengeluaran; kategori mengelompokkan seperti Gaji, Makan, Transportasi, dan lain-lain; metodePembayaran menyatakan Cash/E-Wallet/Transfer; dan jumlah (double) menyimpan nominal. Semua dibuat private untuk enkapsulasi agar akses dan perubahan dilakukan lewat getter–setter, sehingga data aman dan valid.
+      > Kelas App berfungsi sebagai titik masuk utama program dan berada pada package main. Di dalam kelas ini terdapat method main yang menampilkan menu aplikasi Pocket Guard dengan antarmuka berbasis console. Kelas App mengatur perulangan menu menggunakan struktur do..while serta switch case untuk mengeksekusi pilihan pengguna, seperti menambah, melihat, mengubah, menghapus catatan, hingga menampilkan ringkasan saldo atau mengatur batas pengeluaran. Semua logika yang lebih kompleks didelegasikan kepada kelas TransaksiService. Selain itu, di file ini juga terdapat kelas kecil bernama SafeInput yang bertugas menangani input angka agar lebih aman, sehingga program tidak error ketika pengguna salah memasukkan data. Dengan demikian, App berperan sebagai penghubung antara pengguna dengan logika bisnis yang ada di service.
 
-3. Penjelasan constructor
-   
-   <img width="766" height="225" alt="image" src="https://github.com/user-attachments/assets/c7cf604e-d6fe-4b73-8b39-a9a9b42530c9" />
+   b. Class Transaksi.Java yang terdapat di Packages Model
 
-> Konstruktor Transaksi(...) adalah metode khusus yang namanya sama dengan kelas dan tidak punya tipe kembalian; ia dieksekusi otomatis saat membuat objek baru. Parameter yang diterima (id, tanggal, keterangan, jenis, kategori, metodePembayaran, jumlah) dipetakan ke atribut objek melalui kata kunci this, sehingga this.id = id; artinya nilai parameter id dimasukkan ke properti id milik objek. Dengan pola ini, setiap objek Transaksi selalu terbentuk dalam keadaan sudah terisi data lengkap dan konsisten. Contoh pemakaian: new Transaksi(1, "2025-09-01", "Gaji Bulanan", "Pemasukan", "Gaji", "Transfer", 5000000); akan langsung menghasilkan catatan transaksi yang siap digunakan tanpa perlu set nilai satu per satu.
+      <img width="324" height="88" alt="image" src="https://github.com/user-attachments/assets/92fec8c4-1ae3-4709-b592-74739a379629" />
 
-4. Penjelasan access modifier
-   
-   Berikut adalah beberapa access modifier yang saya gunakan pada program:
-   
-   a. Transaksi.Java
+      > Kelas Transaksi terletak pada package model dan berperan sebagai superclass atau kelas induk dari data transaksi. Kelas ini berisi atribut yang umum dimiliki setiap transaksi, yaitu id, tanggal, keterangan, jenis, kategori, metodePembayaran, dan jumlah. Semua atribut dibuat private untuk menerapkan konsep encapsulation, sedangkan aksesnya diberikan melalui method getter dan setter yang bersifat public. Konstruktor kelas Transaksi digunakan untuk menginisialisasi seluruh atribut ketika sebuah objek transaksi baru dibuat. Dengan adanya kelas ini, struktur data transaksi menjadi konsisten dan dapat diwariskan ke subclass lain. Kelas Transaksi juga menjadi kontrak dasar yang memungkinkan penggunaan polimorfisme pada list transaksi di kelas service.
 
-   <img width="1140" height="857" alt="image" src="https://github.com/user-attachments/assets/d1804ef8-1907-434f-9f06-1ca9a15236f4" />
+   c. Class Pemasukkan.Java yang terdapat di Packages Model
 
-   > Kelas Transaksi dideklarasikan public agar bisa dipakai lintas paket. Seluruh atribut id, tanggal, keterangan, jenis, kategori, metodePembayaran, dan jumlah bermodifier private untuk menerapkan enkapsulasi sehingga nilainya tidak bisa diubah langsung dari luar kelas. Nilai awal diisi melalui konstruktor public Transaksi(...), sedangkan akses dan perubahan data dilakukan lewat getter dan setter yang juga public. Dengan susunan ini, objek selalu dibuat dalam keadaan valid dan setiap perubahan melewati kontrol metode yang disediakan.
+      <img width="324" height="88" alt="image" src="https://github.com/user-attachments/assets/7beac97c-c2c8-48d6-bc3d-1dc1ec3007ea" />
 
-   b. TransaksiService.Java
-   
-   <img width="591" height="157" alt="image" src="https://github.com/user-attachments/assets/71db12a2-d9dc-4132-8d2b-278cface7d0e" />
-   
-   <img width="440" height="98" alt="image" src="https://github.com/user-attachments/assets/0d78466b-f13f-4a89-a387-b20c93da268e" />
+      > Kelas Pemasukan juga berada pada package model dan merupakan subclass dari Transaksi. Kelas ini merepresentasikan transaksi yang berjenis pemasukan. Konstruktor di dalamnya akan otomatis mengatur jenis transaksi menjadi “Pemasukan” tanpa harus diinput ulang oleh pengguna. Selain itu, kelas ini melakukan overriding terhadap method getJenis() sehingga setiap kali dipanggil akan selalu mengembalikan nilai “Pemasukan”. Method setJenis() juga dioverride dan dikosongkan agar nilai jenis tidak dapat diubah secara sembarangan. Dengan cara ini, objek Pemasukan tetap konsisten menyimpan identitasnya sebagai pemasukan, sekalipun pengguna mencoba melakukan perubahan pada menu ubah data.
 
-   > TransaksiService dideklarasikan public supaya bisa dipanggil dari App meski berada di paket berbeda. Di dalam kelas ini, state seperti daftar dan input ditandai private agar tidak bisa diakses dari luar, dan diberi final supaya referensinya tidak diganti selama program berjalan; variabel kontrol seperti autoId dan batasPengeluaranBulanan juga private agar hanya logika di service yang boleh mengubahnya. Metode public void tambahCatatan() berfungsi sebagai antarmuka layanan yang dipanggil dari App, dan pola yang sama dipakai untuk operasi lain seperti lihat, ubah, hapus, ringkasan saldo, filter/search, set batas, hingga tampilkan tabel semuanya public karena menjadi API yang dipakai UI. Sementara itu, detail implementasi dan utilitas seperti tambahSeed, hitungTotalJenis, formatRupiah, findById, serta berbagai helper validasi input disembunyikan dengan private karena hanya digunakan secara internal. Dengan susunan ini, enkapsulasi terjaga: App cukup memanggil metode publik tanpa menyentuh data langsung, sedangkan data dan cara kerjanya tetap aman di dalam service.
+   d. Class Pengeluaran.Java yang terdapat di Packages Model
 
-   c. App.Java
-   
-    <img width="605" height="74" alt="image" src="https://github.com/user-attachments/assets/eaaf08f4-c297-40b9-a97f-4a7c09ef09bd" />
+      <img width="324" height="88" alt="image" src="https://github.com/user-attachments/assets/dc87e539-277e-41c4-969f-47543720d7d9" />
 
-   > App dideklarasikan public agar bisa dijalankan dari luar paket, dan public static void main(String[] args) adalah titik masuk program di Java. Di dalamnya dibuat objek TransaksiService dengan new TransaksiService(); objek ini nanti dipakai untuk memanggil operasi publik seperti seed(), tambahCatatan(), lihatSemuaCatatan(), ubahCatatan(), hapusCatatan(), dan seterusnya melalui logika menu. Modifier public pada kelas dan method memastikan keduanya dapat dipanggil oleh runtime maupun kelas lain, sedangkan static pada main membuatnya bisa dieksekusi tanpa perlu membuat objek App.
-    
-6. Penjelasan packages, dengan memisahkan class berdasarkan fungsinya:
+      > Kelas Pengeluaran merupakan subclass lain dari Transaksi yang juga berada di package model. Fungsinya adalah merepresentasikan transaksi yang berjenis pengeluaran. Sama seperti Pemasukan, konstruktor Pengeluaran secara otomatis menetapkan jenis transaksi sebagai “Pengeluaran”. Method getJenis() dioverride agar selalu mengembalikan “Pengeluaran”, sedangkan method setJenis() juga dioverride untuk mencegah perubahan jenis. Hal ini membuat setiap objek Pengeluaran tetap terjaga konsistensinya sebagai transaksi pengeluaran. Dengan adanya subclass Pemasukan dan Pengeluaran, struktur data lebih terpisah dengan jelas sekaligus lebih aman dari kesalahan input.
+
+   e. Class TransaksiService.Java yang terdapat di Packages Service
+
+      <img width="352" height="46" alt="image" src="https://github.com/user-attachments/assets/742713dc-7dc2-46d9-95f2-a5aee89cf267" />
+
+      > Kelas TransaksiService terletak pada package service dan bertanggung jawab mengelola seluruh logika bisnis aplikasi. Di dalamnya terdapat sebuah list bertipe Transaksi yang dapat menyimpan objek Pemasukan maupun Pengeluaran. Di sinilah konsep polimorfisme dijalankan, karena meskipun list bertipe Transaksi, saat method getJenis() dipanggil, hasilnya akan menyesuaikan perilaku override dari masing-masing subclass. TransaksiService menyediakan berbagai fitur seperti menambah data baru dengan memilih subclass sesuai jenis transaksi, menampilkan seluruh catatan dalam bentuk tabel, mengubah data, menghapus data, menghitung ringkasan saldo, serta mengatur batas pengeluaran bulanan. Selain itu, TransaksiService juga memiliki fitur filter berdasarkan kategori, metode pembayaran, dan jenis transaksi, serta pencarian berdasarkan keterangan. Untuk mendukung hal itu, disediakan berbagai helper method privat seperti validasi input, pencarian ID, pemformatan rupiah, dan tampilan tabel. Dengan demikian, TransaksiService berfungsi sebagai penghubung utama antara antarmuka di kelas App dan data model pada kelas Transaksi beserta turunannya.
+
+3. Penjelasan packages, dengan memisahkan class berdasarkan fungsinya:
     - packages main > isinya adalah kode yang menyimpan menu user
 
       <img width="298" height="23" alt="image" src="https://github.com/user-attachments/assets/7db00e9f-91d9-4e3e-a1bf-13141128816d" />
@@ -97,20 +79,10 @@ Secara keseluruhan, Pocket Guard membantu melacak arus kas harian, menjaga kesei
 
    > Struktur proyek dipisah ke tiga paket sesuai fungsinya. Paket com.mycompany.posttest2pbo.main menampung antarmuka konsol dan entry point aplikasi, yaitu kelas App yang menampilkan menu dan meneruskan pilihan pengguna. Paket com.mycompany.posttest2pbo.service berisi logika bisnis: seluruh operasi CRUD, validasi input, filter dan search, ringkasan saldo, pengaturan batas, serta utilitas tampilan tabel di sinilah proses data berlangsung tanpa bergantung pada UI. Paket com.mycompany.posttest2pbo.model menyimpan struktur data, yaitu kelas Transaksi dengan atribut, constructor, serta getter–setter. Pemisahan ini membuat kode rapi, mudah dirawat dan diuji, serta sesuai ketentuan tugas tentang packages berdasarkan fungsi.
 
-7. Penjelasan penerapan MVC
+4. Menerapkan encapsulation (getter dan setter)
+5. Menerapkan inheritance (minimal memiliki 1 superclass dengan 2 subclass)
+6. Menerapkan Overriding
    
-> 1. com.mycompany.posttest2pbo.model
-Berisi Model aplikasi, yaitu kelas Transaksi. Kelas ini menyimpan struktur data transaksi: seluruh atribut dibuat private (enkapsulasi), ada constructor untuk inisialisasi saat objek dibuat, serta getter–setter public untuk akses terkontrol. Paket ini tidak berisi logika bisnis murni representasi data.
->
-> 2. com.mycompany.posttest2pbo.service
-Berisi Controller/Service yang mengeksekusi logika bisnis. Kelas TransaksiService mengelola daftar Transaksi (CRUD lengkap), validasi input, filter dan search, ringkasan saldo, pengaturan batas pengeluaran, serta utilitas tampilan tabel. Metode yang dipakai UI bersifat public (misal tambahCatatan, lihatSemuaCatatan, ubahCatatan, hapusCatatan, menuFilter, ringkasanSaldo, setBatasPengeluaran), sedangkan helper dan utilitas disembunyikan sebagai private.
->
-> 3. com.mycompany.posttest2pbo.main
-Berisi View/entry point aplikasi. Kelas App menampilkan menu konsol dan menangani interaksi pengguna, lalu memanggil metode publik pada TransaksiService. Di sinilah program dimulai melalui public static void main(String[] args) yang membuat instance service dan menjalankan alur menu.
->
-> Alur singkat
-Pengguna berinteraksi lewat App → App memanggil metode di TransaksiService → TransaksiService membuat/mengubah/membaca objek Transaksi di model dan mengembalikan hasil ke UI. Struktur ini memenuhi MVC sederhana dan memisahkan tanggung jawab dengan jelas.
-
 ### ~ Penjelasan Alur Program (Output Program)  ~
 
 <h1 align="center"><img width="369" height="306" alt="image" src="https://github.com/user-attachments/assets/9aaa0cd6-68b4-4dd0-903c-988aa4aedf47" /></h1>

@@ -64,7 +64,7 @@ Secara keseluruhan, Pocket Guard membantu melacak arus kas harian, menjaga kesei
 
       > Kelas TransaksiService terletak pada package service dan bertanggung jawab mengelola seluruh logika bisnis aplikasi. Di dalamnya terdapat sebuah list bertipe Transaksi yang dapat menyimpan objek Pemasukan maupun Pengeluaran. Di sinilah konsep polimorfisme dijalankan, karena meskipun list bertipe Transaksi, saat method getJenis() dipanggil, hasilnya akan menyesuaikan perilaku override dari masing-masing subclass. TransaksiService menyediakan berbagai fitur seperti menambah data baru dengan memilih subclass sesuai jenis transaksi, menampilkan seluruh catatan dalam bentuk tabel, mengubah data, menghapus data, menghitung ringkasan saldo, serta mengatur batas pengeluaran bulanan. Selain itu, TransaksiService juga memiliki fitur filter berdasarkan kategori, metode pembayaran, dan jenis transaksi, serta pencarian berdasarkan keterangan. Untuk mendukung hal itu, disediakan berbagai helper method privat seperti validasi input, pencarian ID, pemformatan rupiah, dan tampilan tabel. Dengan demikian, TransaksiService berfungsi sebagai penghubung utama antara antarmuka di kelas App dan data model pada kelas Transaksi beserta turunannya.
 
-2. Penjelasan packages, dengan memisahkan class berdasarkan fungsinya:
+2. Penjelasan packages yang ada di program "Pocket Guard"
     - Packages Main
       
          <img width="306" height="20" alt="image" src="https://github.com/user-attachments/assets/f663a9fc-d68e-463f-8c95-9ee9418fae72" />

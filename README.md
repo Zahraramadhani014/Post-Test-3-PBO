@@ -11,7 +11,6 @@ Kelas: Sistem Informasi A'2024
 
 --------------------------------------------------------------------------------------------
 
-
 <h2 align="center">💵💸💹 Manajemen Catatan Keuangan Harian (Budget Tracker) 💰🪙💴 </h2> 
 
 <h2 align="center">=================================================</h2> 
@@ -65,9 +64,10 @@ Secara keseluruhan, Pocket Guard membantu melacak arus kas harian, menjaga kesei
       > Kelas TransaksiService terletak pada package service dan bertanggung jawab mengelola seluruh logika bisnis aplikasi. Di dalamnya terdapat sebuah list bertipe Transaksi yang dapat menyimpan objek Pemasukan maupun Pengeluaran. Di sinilah konsep polimorfisme dijalankan, karena meskipun list bertipe Transaksi, saat method getJenis() dipanggil, hasilnya akan menyesuaikan perilaku override dari masing-masing subclass. TransaksiService menyediakan berbagai fitur seperti menambah data baru dengan memilih subclass sesuai jenis transaksi, menampilkan seluruh catatan dalam bentuk tabel, mengubah data, menghapus data, menghitung ringkasan saldo, serta mengatur batas pengeluaran bulanan. Selain itu, TransaksiService juga memiliki fitur filter berdasarkan kategori, metode pembayaran, dan jenis transaksi, serta pencarian berdasarkan keterangan. Untuk mendukung hal itu, disediakan berbagai helper method privat seperti validasi input, pencarian ID, pemformatan rupiah, dan tampilan tabel. Dengan demikian, TransaksiService berfungsi sebagai penghubung utama antara antarmuka di kelas App dan data model pada kelas Transaksi beserta turunannya.
 
 2. Penjelasan packages yang ada di program "Pocket Guard"
-    - Packages Main
+   
+   - Packages Main
       
-         <img width="306" height="20" alt="image" src="https://github.com/user-attachments/assets/f663a9fc-d68e-463f-8c95-9ee9418fae72" />
+     <img width="306" height="20" alt="image" src="https://github.com/user-attachments/assets/f663a9fc-d68e-463f-8c95-9ee9418fae72" />
 
       > Package com.mycompany.posttest3pbo.main berisi kelas utama yang menjadi titik masuk program, yaitu App.java. Di dalamnya terdapat method main yang bertugas menampilkan menu aplikasi Pocket Guard, menerima input pengguna, dan memanggil metode-metode yang ada di service. Dengan kata lain, package ini menangani sisi antarmuka console yang berinteraksi langsung dengan user. Selain itu, di dalam file yang sama terdapat kelas SafeInput yang digunakan untuk memastikan input angka selalu valid agar program berjalan tanpa error. Package ini fokus pada bagian view dan entry point aplikasi.
 
@@ -133,12 +133,10 @@ Secara keseluruhan, Pocket Guard membantu melacak arus kas harian, menjaga kesei
 
    Penerapan overriding ini sangat penting karena menjaga konsistensi data antara jenis transaksi dengan subclass yang menaunginya. Selain itu, hal ini juga memperlihatkan penggunaan prinsip polimorfisme dalam OOP, di mana pemanggilan method getJenis() akan menghasilkan perilaku yang berbeda tergantung pada objek sebenarnya, apakah itu Pemasukan atau Pengeluaran, meskipun keduanya ditampung dalam list bertipe Transaksi.
 
-   
-   
+    
 ### ~ Penjelasan Alur Program (Output Program)  ~
 
 <h1 align="center"><img width="369" height="306" alt="image" src="https://github.com/user-attachments/assets/9aaa0cd6-68b4-4dd0-903c-988aa4aedf47" /></h1>
-
 
 > Saat program dijalankan, muncul pesan pembuka “SELAMAT DATANG DI POCKET GUARD – Aplikasi Catatan Keuangan Harian Anda”. Setelah itu tampil Menu Utama berisi pilihan untuk menambah catatan, melihat daftar catatan, mengubah atau menghapus catatan, menampilkan ringkasan saldo, memfilter catatan (berdasarkan jenis, kategori, atau metode pembayaran) dan searching berdasarkan keterangan, menetapkan batas pengeluaran bulanan, serta opsi keluar untuk mengakhiri program.
 >
@@ -186,10 +184,9 @@ Secara keseluruhan, Pocket Guard membantu melacak arus kas harian, menjaga kesei
 >    
 >    Menu ini digunakan untuk keluar dari aplikasi. Setelah memilih opsi ini, sistem akan menampilkan pesan penutup sebelum program dihentikan.
 
-#### 1. Menu Tambah Catatan Keuangan
+### 1. Menu Tambah Catatan Keuangan
 
 <img width="688" height="407" alt="image" src="https://github.com/user-attachments/assets/feae8186-3ee4-44f1-9104-c23d6dc6ec5b" />
-
 
 > Ketika menginputkan angka 1 pada menu utama maka akan diarahkan ke menu "Tambah Catatan Keuangan" seperti yang tertera pada gambar di atas
 
@@ -200,21 +197,22 @@ Secara keseluruhan, Pocket Guard membantu melacak arus kas harian, menjaga kesei
 <img width="1025" height="408" alt="image" src="https://github.com/user-attachments/assets/df4b47e0-b4bd-4266-8b85-14f4d19fd624" />
 
 > Setelah data baru berhasil ditambahkan, program akan langsung menampilkan ulang seluruh daftar catatan keuangan dalam bentuk tabel. Tabel ini memuat informasi lengkap seperti ID, Tanggal, Jenis (pemasukan/pengeluaran), Kategori, Metode Pembayaran, Jumlah, serta Keterangan.
->
+
 > Di bagian bawah tabel, program juga memberikan pilihan "Apakah Ingin Menambah Catatan Lagi? (Y/T):".
 > 
 >  a. Jika menginputkan "Y", maka akan diarahkan untuk menginputkan catatan baru mulai dari menginputkan tanggal sampai nominal transaksinya. Ketika berhasil menambahkan data maka akan muncul pesan bahwa "Data Berhasil Ditambahkan".
 > 
 > <img width="957" height="219" alt="image" src="https://github.com/user-attachments/assets/ec4aabe8-aede-4d4a-8296-e7e4c56c4584" />
 >
-> Dan setelah berhasil menambahkan data baru, program akan langsung menampilkan ulang seluruh daftar catatan keuangan dalam bentuk tabel dan diarahkan kembali ke pertanyaan "Apakah Ingin Menambah Catatan Lagi? (Y/T):", Seperti yang tertera pada gambar di bawah ini.
+> Dan setelah berhasil menambahkan data baru, program akan langsung menampilkan ulang seluruh daftar catatan keuangan dalam bentuk tabel dan diarahkan kembali ke pertanyaan "Apakah Ingin Menambah Catatan Lagi? (Y/T):", seperti yang tertera pada gambar di bawah ini.
 > 
 > <img width="1016" height="389" alt="image" src="https://github.com/user-attachments/assets/93414b8b-46ec-4601-8c40-3704b477d5a5" />
 >
-> b. Jika  menginputkan "T" maka akan di arahkan ke menu utama program ini.
+>  b. Jika  menginputkan "T" maka akan di arahkan ke menu utama program ini.
 > 
 > <img width="386" height="348" alt="image" src="https://github.com/user-attachments/assets/c1a16e7a-c0f0-4a95-b777-fffb111a0ec5" />
 
+#### Validasi Input Pada Menu "Tambah Catatan Keuangan"
 
 - Pada menu "Tambah Catatan Keuangan", ketika nominal transaksi diinputkan menggunakan huruf alih-alih angka, sistem akan menampilkan peringatan berupa pesan "Harus angka! Silakan input ulang". Pesan ini memastikan agar data yang dimasukkan valid sesuai format angka, sehingga perhitungan transaksi dapat berjalan dengan benar, seperti terlihat pada gambar di bawah ini.
   
@@ -228,7 +226,26 @@ Secara keseluruhan, Pocket Guard membantu melacak arus kas harian, menjaga kesei
 
   <img width="670" height="128" alt="image" src="https://github.com/user-attachments/assets/677956e8-ef34-4d7d-bc29-62b201ee3dc0" />
 
-#### 2. Menu Lihat Semua Catatan Keuangan 
+- Jika menginputkan tanggal tidak sesuai format yang diminta yaitu "yyyy-mm-dd", maka akan muncul pesan "Format tanggal harus yyyy-mm-dd" dan sistem akan meminta untuk menginputkan kembali tanggal sesuai dengan format "yyyy-mm-dd".
+
+  <img width="662" height="110" alt="image" src="https://github.com/user-attachments/assets/70540860-6f9a-4e13-abad-1d96ea4ba85d" />
+
+- Jika menginputkan jenis transaksi selain "Pemasukan/Pengeluaran", maka akan muncul pesan "Pilihan tidak valid. Pilihan yang valid: Pemasukan/Pengeluaran" dan sistem akan meminta ulang untuk menginputkan jenis transaksi yang sesuai dengan jenis transaksi yang tersedia yaitu "Pemasukan/Pengeluaran".
+
+  <img width="685" height="192" alt="image" src="https://github.com/user-attachments/assets/5d9be1b6-9710-477e-b8f4-eef87a7d0bba" />
+
+- Jika menginputkan kategori selain "Gaji, Makan, Transportasi, Hiburan, Belanja, Tabungan, Tagihan", maka akan muncul pesan "Pilihan tidak valid. Pilihan yang valid: Gaji/Makan/Transportasi/Hiburan/Belanja/Tabungan/Tagihan" dan sistem akan meminta ulang untuk menginputkan kategori yang sesuai dengan kategori yang tersedia yaitu "Gaji, Makan, Transportasi, Hiburan, Belanja, Tabungan, Tagihan".
+
+  <img width="820" height="251" alt="image" src="https://github.com/user-attachments/assets/27663a6a-582b-4f7a-92f5-2056450bf5b2" />
+
+- Jika menginputkan metode pembayaran selain "Cash, E-Wallet, Transfer", maka akan muncul pesan "Pilihan tidak valid. Pilihan yang valid: Cash/E-Wallet/Transfer" dan sistem akan meminta ulang untuk menginputkan metode pembayaran yang sesuai dengan meode pembayaran yang tersedia yaitu "Cash, E-Wallet, Transfer".
+
+  <img width="802" height="302" alt="image" src="https://github.com/user-attachments/assets/4dc6401a-76e1-4eb4-99f6-9a1fc1449452" />
+
+
+
+
+### 2. Menu Lihat Semua Catatan Keuangan 
 
 <img width="1032" height="684" alt="image" src="https://github.com/user-attachments/assets/f9e507f9-4769-4189-bfe8-c6ad65a0efad" />
 
@@ -239,7 +256,7 @@ Secara keseluruhan, Pocket Guard membantu melacak arus kas harian, menjaga kesei
 >
 > Selain itu, pada bagian bawah tabel akan muncul perintah "Ketik 0 untuk kembali" yang berfungsi untuk kembali ke menu utama.
 
-#### 3. Menu Ubah Catatan Keuangan
+### 3. Menu Ubah Catatan Keuangan
 
 <img width="1018" height="717" alt="image" src="https://github.com/user-attachments/assets/207e61d0-10be-427f-bc5f-da01b1fbb83c" />
 
@@ -306,7 +323,7 @@ Setelah proses Ubah Catatan Keuangan selesai dilakukan, sistem akan menampilkan 
   <img width="1001" height="518" alt="image" src="https://github.com/user-attachments/assets/6668a812-564b-472c-8717-4abb92e583d6" />
 
 
-#### 4. Menu Hapus Catatan Keuangan  
+### 4. Menu Hapus Catatan Keuangan  
 
 <img width="998" height="724" alt="image" src="https://github.com/user-attachments/assets/2f9ce51e-330b-4a68-978a-a1401913bc5e" />
 
@@ -369,7 +386,7 @@ Setelah berhasil menghapus data, sistem akan menampilkan pertanyaan "Apakah Ingi
   <img width="444" height="367" alt="image" src="https://github.com/user-attachments/assets/7bca2a3e-5ec8-446c-b28d-bd68c647b384" />
 
 
-#### 5. Menu Ringkasan Saldo
+### 5. Menu Ringkasan Saldo
 
 <img width="686" height="474" alt="image" src="https://github.com/user-attachments/assets/2e60355e-8fe5-4cf1-b81b-7f5106fc4a0c" />
 
@@ -380,7 +397,7 @@ Setelah berhasil menghapus data, sistem akan menampilkan pertanyaan "Apakah Ingi
 
 > Ketika menambahkan catatan pengeluaran dengan jumlah yang melebihi pemasukan, lalu membuka menu Ringkasan Saldo, sistem akan tetap menampilkan total pemasukan, total pengeluaran, dan saldo akhir. Karena nilai pengeluaran lebih besar dibandingkan pemasukan, saldo ditampilkan dalam kondisi negatif. Selain itu, sistem juga memberikan catatan berupa peringatan: “Pengeluaran lebih besar dari pemasukan. Harap bijak mengatur keuangan.” Setelah itu, sistem meminta untuk mengetik angka 0 agar dapat kembali ke menu utama.
 
-#### 6. Menu Filter dan Search Catatan
+### 6. Menu Filter dan Search Catatan
 
 <img width="628" height="514" alt="image" src="https://github.com/user-attachments/assets/655b7415-3cac-417f-8ba4-846db2ef18c7" />
 
@@ -553,7 +570,7 @@ h. Jika mengosongkan input pada menu
 Maka akan muncul pesan "Harus angka! Silakan input ulang:".
 
 
-#### 7. Menu Set Batas Pengeluaran
+### 7. Menu Set Batas Pengeluaran
 
 <img width="697" height="420" alt="image" src="https://github.com/user-attachments/assets/9c7eaf12-58ae-4787-91b2-1298c2fa5819" />
 
@@ -576,22 +593,23 @@ Maka akan muncul pesan "Harus angka! Silakan input ulang:".
 > Ketika mengosongkan input "Masukkan batas baru (ketik 0 untuk menonaktifkan):", makan akan muncul pesan "Tidak boleh kosong. Coba lagi", sehingga hanya boleh mengisi batas pengeluaran terbaru atau ketik 0 untuk menonaktifkan.
 
 
-#### 8. Menu Keluar
+### 8. Menu Keluar
 
 <img width="454" height="401" alt="image" src="https://github.com/user-attachments/assets/d0652801-2e8f-47f5-9db6-a739c1f7b7ce" />
 
 > Ketika menginputkan angka 8 pada menu utama, sistem akan langsung menutup aplikasi Pocket Guard. Sebelum keluar, ditampilkan pesan ucapan terima kasih berupa “Terima kasih telah menggunakan POCKET GUARD” serta doa agar keuangan selalu aman dan terjaga. Dengan begitu, aplikasi benar-benar mengakhiri jalannya program setelah perintah keluar dipilih.
 
-#### 9. Jika Menginputkan Menu Selain Menu 1-8, Menginputkan Menu Pakai Huruf Bukan Angka, dan Mengkosongkan inputan pada saat input menu 1-8
+### 9. Jika Menginputkan Menu Selain Menu 1-8, Menginputkan Menu Pakai Huruf Bukan Angka, dan Mengkosongkan inputan pada saat input menu 1-8
 
 <img width="430" height="702" alt="image" src="https://github.com/user-attachments/assets/640fee0c-2940-4da6-8931-8cde3526e169" />
 
 > Ketika menginputkan angka di luar rentang 1 sampai 8 pada menu utama, sistem akan menampilkan pesan “Pilihan tidak valid. Silakan coba lagi!!!” lalu mengembalikan tampilan ke menu utama agar dapat memilih ulang menu yang benar.
 
+
 <img width="431" height="326" alt="image" src="https://github.com/user-attachments/assets/5e558d4d-c4b3-4581-b535-eaf94c632bc6" />
 
-
 > Selain itu, jika input yang dimasukkan berupa huruf atau teks alih-alih angka, sistem akan menolak dengan menampilkan pesan “Harus angka! Silakan input ulang:” kemudian meminta masukan baru sampai format yang dimasukkan benar berupa angka dalam rentang 1–8.
+
 
 <img width="404" height="325" alt="image" src="https://github.com/user-attachments/assets/325cdbbe-ea57-43c5-a232-41ac93870e5a" />
 

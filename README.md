@@ -243,12 +243,9 @@ Secara keseluruhan, Pocket Guard membantu melacak arus kas harian, menjaga kesei
   <img width="802" height="302" alt="image" src="https://github.com/user-attachments/assets/4dc6401a-76e1-4eb4-99f6-9a1fc1449452" />
 
 
-
-
 ### 2. Menu Lihat Semua Catatan Keuangan 
 
 <img width="1032" height="684" alt="image" src="https://github.com/user-attachments/assets/f9e507f9-4769-4189-bfe8-c6ad65a0efad" />
-
 
 > Ketika menginputkan angka 2 pada menu utama maka akan diarahkan ke menu "Lihat Semua Catatan Keuangan" seperti yang tertera pada gambar di atas.
 >
@@ -260,8 +257,7 @@ Secara keseluruhan, Pocket Guard membantu melacak arus kas harian, menjaga kesei
 
 <img width="1018" height="717" alt="image" src="https://github.com/user-attachments/assets/207e61d0-10be-427f-bc5f-da01b1fbb83c" />
 
-> Ketika menginputkan angka 3 pada menu utama maka akan diarahkan ke menu "Ubah Catatan
-Keuangan" seperti yang tertera pada gambar di atas.
+> Ketika menginputkan angka 3 pada menu utama maka akan diarahkan ke menu "Ubah Catatan Keuangan" seperti yang tertera pada gambar di atas.
 >
 >  Pada menu ini, seluruh daftar transaksi ditampilkan lengkap dengan ID, tanggal, jenis, kategori, metode pembayaran, jumlah, dan keterangan, sehingga catatan yang ingin diperbarui dapat dipilih dengan mudah.
 
@@ -293,24 +289,28 @@ Setelah proses Ubah Catatan Keuangan selesai dilakukan, sistem akan menampilkan 
 > b. Jika  menginputkan "T"
 > 
 >  <img width="385" height="349" alt="image" src="https://github.com/user-attachments/assets/bb046725-13d4-4df0-890a-25350b46a088" />
-
+>
 >
 >  Program akan langsung keluar dari menu ubah catatan dan kembali ke Menu Utama. Hal ini memudahkan jika tidak ingin lagi melakukan perubahan pada catatan yang ada.
+
+#### Validasi Input Pada Menu "Ubah Catatan Keuangan"
 
 - Pada saat menginputkan ID yang tidak tersedia di dalam tabel, sistem akan memberikan peringatan "ID tidak ditemukan" seperti gambar di bawah ini.
   
   <img width="1199" height="815" alt="image" src="https://github.com/user-attachments/assets/7b99194b-783e-4dd7-a122-0a5cb58b09fe" />
 
-  Hal ini menunjukkan bahwa ID yang dimasukkan tidak sesuai dengan daftar transaksi yang ada. Setelah itu, sistem tetap menampilkan ulang tabel catatan keuangan terbaru agar bisa memastikan ID mana yang valid.
-
-  Dengan cara ini, tidak akan terjadi kesalahan dalam mengubah data transaksi karena hanya ID yang tersedia dalam tabel yang dapat diproses.
+  Hal ini menunjukkan bahwa ID yang dimasukkan tidak sesuai dengan daftar transaksi yang ada. Setelah itu, sistem tetap menampilkan ulang tabel catatan keuangan terbaru agar bisa memastikan ID mana yang valid. Dengan cara ini, tidak akan terjadi kesalahan dalam mengubah data transaksi karena hanya ID yang tersedia dalam tabel yang dapat diproses.
   
 - Pada saat mencoba menginputkan ID dengan huruf (contoh: "sebelas") alih-alih angka (11), sistem akan otomatis menolak input tersebut. Program akan menampilkan pesan error "Harus angka! Silakan input ulang:".
   
   <img width="994" height="474" alt="image" src="https://github.com/user-attachments/assets/c6004323-fdf3-4281-bf23-ab5368a095b0" />
 
   Pesan ini memastikan bahwa input yang diterima hanya berupa angka valid sesuai ID transaksi.
-  
+
+- Pada saat mengosongkan inputan ID yang ingin diubah, maka sistem akan memberikan peringatan "Harus angka! Silakan input ulang:" seperti gambar di bawah ini.
+
+  <img width="1009" height="477" alt="image" src="https://github.com/user-attachments/assets/1d1b1b34-876c-4b94-bd76-6101caea9f0f" />
+
 - Apabila nominal transaksi diinputkan dengan huruf (contoh: "tiga juta") alih-alih angka (3000000), sistem akan langsung menolak input tersebut dan menampilkan pesan error "Harus angka! Silakan input ulang:" seperti pada gambar di bawah ini.
   
   <img width="497" height="211" alt="image" src="https://github.com/user-attachments/assets/115dfe19-20a1-409c-85be-36bf89500fcc" />
@@ -327,10 +327,14 @@ Setelah proses Ubah Catatan Keuangan selesai dilakukan, sistem akan menampilkan 
 
 <img width="998" height="724" alt="image" src="https://github.com/user-attachments/assets/2f9ce51e-330b-4a68-978a-a1401913bc5e" />
 
-<img width="1003" height="445" alt="image" src="https://github.com/user-attachments/assets/fe4b41d1-0b6c-4445-a10e-340ccdebd398" />
+<img width="1045" height="438" alt="image" src="https://github.com/user-attachments/assets/3ccec24b-50e3-4458-8b6f-3104ed8a5a7a" />
 
->  Ketika  menginputkan angka 4 pada menu utama, sistem akan mengarahkan ke menu Hapus Catatan Keuangan. Pada tahap ini, tabel catatan keuangan akan ditampilkan terlebih dahulu agar tidak terjadi kebingungan mengenai data mana yang ingin dihapus. Setelah tabel ditampilkan, sistem kemudian meminta untuk menginputkan ID catatan yang ingin dihapus.
+>  Ketika  menginputkan angka 4 pada menu utama, sistem akan mengarahkan ke menu Hapus Catatan Keuangan. Pada tahap ini, tabel catatan keuangan akan ditampilkan terlebih dahulu agar tidak terjadi kebingungan mengenai data mana yang ingin dihapus. Setelah tabel ditampilkan, sistem kemudian meminta untuk menginputkan ID catatan yang ingin dihapus atau klik enter untuk membatalkan penghapusan catatan.
 >
+> Jika kita berubah pikiran, tidak jadi ingin menghapus catatan keuangan maka bisa klik enter saja untuk membatalkan penghapusan dan akan muncul pesan "Penghapusan dibatalkan" dan akan diarahkan lagi ke menu utama program ini, seperti gambar yang tertera di bawah ini.
+> 
+> <img width="560" height="372" alt="image" src="https://github.com/user-attachments/assets/940b3ef7-ec5c-43a8-a1bd-489427a24b51" />
+
 > Jika ID yang diinputkan sesuai dengan data yang ada, maka sistem akan menampilkan pertanyaan konfirmasi "Apakah Anda yakin ingin menghapus data dengan ID ... (Y/T)?".
 > 
 > a. Jika  menginputkan "Y"
@@ -364,9 +368,11 @@ Setelah berhasil menghapus data, sistem akan menampilkan pertanyaan "Apakah Ingi
 > b. Jika menginputkan "T"
 > 
 >  <img width="394" height="352" alt="image" src="https://github.com/user-attachments/assets/08b57eb1-5e35-477b-971d-9116a3f91602" />
-
+>
 >
 >  Program akan langsung kembali ke Menu Utama tanpa menghapus catatan tambahan.
+
+#### Validasi Input Pada Menu "Hapus Catatan Keuangan"
 
 <img width="1024" height="485" alt="image" src="https://github.com/user-attachments/assets/72867780-f83f-4f8e-9a36-7014f33cd9dd" />
 
@@ -381,15 +387,9 @@ Setelah berhasil menghapus data, sistem akan menampilkan pertanyaan "Apakah Ingi
 >
 > Pesan ini berfungsi sebagai validasi agar ID hanya bisa diinputkan dalam bentuk angka sesuai dengan tabel catatan yang tersedia.
 
-- Pada saat pengguna memilih menu Hapus Catatan Keuangan, sistem meminta ID catatan yang ingin dihapus. Jika pengguna langsung menekan Enter tanpa mengisi ID, maka input dianggap kosong dan sistem menampilkan pesan “Penghapusan dibatalkan”.
-  
-  <img width="444" height="367" alt="image" src="https://github.com/user-attachments/assets/7bca2a3e-5ec8-446c-b28d-bd68c647b384" />
-
-
 ### 5. Menu Ringkasan Saldo
 
 <img width="686" height="474" alt="image" src="https://github.com/user-attachments/assets/2e60355e-8fe5-4cf1-b81b-7f5106fc4a0c" />
-
 
 > Ketika menginputkan angka 5 pada menu utama, sistem akan menampilkan menu Ringkasan Saldo. Pada menu ini ditampilkan rekapitulasi keuangan yang berisi total pemasukan, total pengeluaran, serta saldo akhir yang merupakan selisih dari keduanya. Informasi ini membantu menampilkan kondisi keuangan terkini secara lebih jelas dan ringkas. Setelah ringkasan saldo ditampilkan, sistem akan meminta untuk mengetik angka 0 agar dapat kembali ke menu utama.
 
@@ -400,7 +400,6 @@ Setelah berhasil menghapus data, sistem akan menampilkan pertanyaan "Apakah Ingi
 ### 6. Menu Filter dan Search Catatan
 
 <img width="628" height="514" alt="image" src="https://github.com/user-attachments/assets/655b7415-3cac-417f-8ba4-846db2ef18c7" />
-
 
 > Ketika menginputkan angka 6 pada menu utama, sistem akan menampilkan menu filter/search. Pada menu ini tersedia beberapa pilihan filter dan search (berdasarkan keterangan), untuk pilihan filter yaitu ada filter per jenis transaksi (pemasukan atau pengeluaran), filter per kategori, dan filter per metode pembayaran. Selain itu, juga tersedia opsi untuk kembali ke menu sebelumnya. Melalui menu ini, catatan keuangan dapat disaring sesuai kriteria tertentu agar informasi yang ditampilkan lebih fokus dan mudah dipahami.
 
@@ -486,7 +485,7 @@ b. Filter per Kategori
   
   <img width="806" height="128" alt="image" src="https://github.com/user-attachments/assets/e1f5e12e-96f9-4907-a163-0068a9c9cc50" />
 
-  > Ketika memasukkan kategori yang tidak tersedia dalam daftar pilihan, misalnya sedekah, sistem akan menampilkan pesan "Pilihan tidak valid. Pilihan yang valid: Gaji/Makan/Transportasi/Hiburan/Belanja/Tabungan/Tagihan". Dengan begitu, hanya kategori yang memang tercatat dalam sistem seperti gaji, makan, transportasi, hiburan, belanja, tabungan, atau tagihan yang dapat difilter. Setelah itu, tampilan akan kembali meminta untuk menginputkan kategori sesuai kategori yang ada.
+   > Ketika memasukkan kategori yang tidak tersedia dalam daftar pilihan, misalnya sedekah, sistem akan menampilkan pesan "Pilihan tidak valid. Pilihan yang valid: Gaji/Makan/Transportasi/Hiburan/Belanja/Tabungan/Tagihan". Dengan begitu, hanya kategori yang memang tercatat dalam sistem seperti gaji, makan, transportasi, hiburan, belanja, tabungan, atau tagihan yang dapat difilter. Setelah itu, tampilan akan kembali meminta untuk menginputkan kategori sesuai kategori yang ada.
 
 - Pada filter kategori, jika mengosongkan inputan "Masukkan Kategori (gaji, makan, transportasi, hiburan, belanja, tabungan, tagihan):", maka akan muncul pesan peringatan yaitu "Tidak boleh kosong. Coba lagi", dan akan diminta untuk menginputkan ulang kategori yang ingin di filter.
 
@@ -519,13 +518,13 @@ c. Filter per Metode Pembayaran
 
 - Selain yang ada di pilihan metode pembayaran
   
- <img width="675" height="114" alt="image" src="https://github.com/user-attachments/assets/02fbf1c0-e75e-452b-8695-04aa5240e6e7" />
+  <img width="675" height="114" alt="image" src="https://github.com/user-attachments/assets/02fbf1c0-e75e-452b-8695-04aa5240e6e7" />
 
-  > Ketika pada menu filter dimasukkan metode pembayaran yang tidak tersedia, misalnya “Kartu debit”, sistem akan langsung menampilkan pesan bahwa "Pilihan tidak valid. Pilihan yang valid: Cash/E-Wallet/Transfer". Setelah itu, sistem akan menampilkan untuk meminta ulang input metode pembayaran yang tersedia.
+   > Ketika pada menu filter dimasukkan metode pembayaran yang tidak tersedia, misalnya “Kartu debit”, sistem akan langsung menampilkan pesan bahwa "Pilihan tidak valid. Pilihan yang valid: Cash/E-Wallet/Transfer". Setelah itu, sistem akan menampilkan untuk meminta ulang input metode pembayaran yang tersedia.
 
 - Pada filter metode pembayaran, jika mengosongkan inputan "Masukkan Metode (Cash/E-Wallet/Transfer):", maka akan muncul pesan peringatan yaitu "Tidak boleh kosong. Coba lagi", dan akan diminta untuk menginputkan ulang metode pembayaran yang ingin di filter.
 
-<img width="682" height="121" alt="image" src="https://github.com/user-attachments/assets/eb0676d8-a796-44a0-b25a-4f152e42dfbe" />
+  <img width="682" height="121" alt="image" src="https://github.com/user-attachments/assets/eb0676d8-a796-44a0-b25a-4f152e42dfbe" />
 
 d. Search (cari di keterangan)  
 
@@ -599,7 +598,7 @@ Maka akan muncul pesan "Harus angka! Silakan input ulang:".
 
 > Ketika menginputkan angka 8 pada menu utama, sistem akan langsung menutup aplikasi Pocket Guard. Sebelum keluar, ditampilkan pesan ucapan terima kasih berupa “Terima kasih telah menggunakan POCKET GUARD” serta doa agar keuangan selalu aman dan terjaga. Dengan begitu, aplikasi benar-benar mengakhiri jalannya program setelah perintah keluar dipilih.
 
-### 9. Jika Menginputkan Menu Selain Menu 1-8, Menginputkan Menu Pakai Huruf Bukan Angka, dan Mengkosongkan inputan pada saat input menu 1-8
+### 9. Jika Menginputkan Menu Selain Menu 1-8, Menginputkan Menu Pakai Huruf Bukan Angka, dan Mengosongkan inputan pada saat input menu 1-8
 
 <img width="430" height="702" alt="image" src="https://github.com/user-attachments/assets/640fee0c-2940-4da6-8931-8cde3526e169" />
 

@@ -591,6 +591,10 @@ Maka akan muncul pesan "Harus angka! Silakan input ulang:".
 
 > Ketika mengosongkan input "Masukkan batas baru (ketik 0 untuk menonaktifkan):", makan akan muncul pesan "Tidak boleh kosong. Coba lagi", sehingga hanya boleh mengisi batas pengeluaran terbaru atau ketik 0 untuk menonaktifkan.
 
+<img width="675" height="133" alt="image" src="https://github.com/user-attachments/assets/e65fd4c4-af86-4bf2-a6fe-5db1148ab43c" />
+
+> Ketika menginputkan batas pengeluaran dengan angka negatif, maka akan muncul pesan "Tidak boleh negatif. Coba lagi" dan sistem akan meminta menginputkan ulang batas pengeluaran atau input 0 untuk menonaktifkan.
+
 
 ### 8. Menu Keluar
 
